@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/LouieLover/sportsbar#readme",
   "dependencies": {
+    "@react-google-maps/api": "^1.13.0",
     "axios": "^0.21.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",

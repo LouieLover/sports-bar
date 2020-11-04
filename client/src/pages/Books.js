@@ -5,6 +5,7 @@ import API from "../utils/API";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { Input, TextArea, FormBtn } from "../components/Form";
+import Map from "../components/Map";
 
 function Books() {
   // Setting our component's initial state
@@ -28,7 +29,7 @@ function Books() {
       <Row>
         <Col size="md-6">
           <Jumbotron>
-            <h1>Favorite Team</h1>
+            <h1>Teams</h1>
           </Jumbotron>
           <form>
             <dropdown
@@ -71,6 +72,16 @@ function Books() {
           ) : (
             <h3>No Results to Display</h3>
           )}
+
+          <Map
+            onLoad={(map) => {
+              const bounds = new window.google.maps.LatLngBounds();
+              map.fitBounds(bounds);
+            }}
+            // onUnmount={(map) => {
+            //   // do your stuff before map is unmounted
+            // }}
+          />
         </Col>
       </Row>
     </Container>
