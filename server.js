@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
+const routes = require("./routes");
 
 const PORT = process.env.PORT || 3000;
 
@@ -28,6 +29,8 @@ connection.on("error", (err) => {
   console.log("Mongoose connection error: ", err);
 });
 
+app.use(routes);
+
 app.get("/api/config", (req, res) => {
   res.json({
     success: true,
@@ -35,9 +38,9 @@ app.get("/api/config", (req, res) => {
   console.log(results);
 });
 
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "./client/build/index.html"));
-// });
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+});
 
 app.listen(PORT, () => {
   console.log(`App is running on http://localhost:${PORT}`);
